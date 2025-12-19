@@ -2,7 +2,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Button } from "@/components/ui/button";
 import { Event } from "@/lib/types";
 import { getSolutionColor } from "@/lib/types";
-import { MapPin, CalendarBlank, Link as LinkIcon, PencilSimple, Trash } from "@phosphor-icons/react";
+import { MapPin, CalendarBlank, Link as LinkIcon, PencilSimple, Trash, X } from "@phosphor-icons/react";
 
 interface EventDetailModalProps {
   event: Event | null;
@@ -28,14 +28,15 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
       });
     }
     const start = new Date(event.startDate + 'T00:00:00+09:00').toLocaleDateString('ko-KR', {
+      year: 'numeric',
       month: 'short',
       day: 'numeric',
       timeZone: 'Asia/Seoul'
     });
     const end = new Date(effectiveEndDate + 'T00:00:00+09:00').toLocaleDateString('ko-KR', {
+      year: 'numeric',
       month: 'short',
       day: 'numeric',
-      year: 'numeric',
       timeZone: 'Asia/Seoul'
     });
     return `${start} ~ ${end}`;
@@ -62,9 +63,7 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
           onClick={onClose}
           className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10 text-foreground"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          <X size={20} weight="bold" />
           <span className="sr-only">Close</span>
         </button>
         
