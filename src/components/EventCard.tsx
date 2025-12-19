@@ -59,7 +59,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
       </div>
       
       {(event.registrationUrl || event.vivaEngageUrl) && (
-        <div className="flex items-center gap-2 mt-0.5">
+        <div className="flex items-center gap-2">
           {event.registrationUrl && (
             <button
               onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
