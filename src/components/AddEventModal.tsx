@@ -129,48 +129,48 @@ export const AddEventModal = ({ open, onClose, onAddEvent, editEvent }: AddEvent
         </button>
 
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold pr-8">
+          <DialogTitle className="text-xl font-semibold pr-8">
             {editEvent ? "Edit Marketing Event" : "Add Marketing Event"}
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-5 pt-2">
+        <div className="space-y-4 pt-2">
           <div>
-            <Label htmlFor="title" className="text-base font-semibold">
+            <Label htmlFor="title" className="text-sm font-semibold">
               Event Title <span className="text-destructive">*</span>
             </Label>
             <Input
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-2 text-base h-11"
+              className="mt-1.5 text-sm h-10"
               placeholder="Enter event title"
             />
-            {errors.title && <p className="text-sm text-destructive mt-1">{errors.title}</p>}
+            {errors.title && <p className="text-xs text-destructive mt-1">{errors.title}</p>}
           </div>
 
           <div>
-            <Label htmlFor="solution" className="text-base font-semibold">
+            <Label htmlFor="solution" className="text-sm font-semibold">
               Solution <span className="text-destructive">*</span>
             </Label>
             <Select value={solution} onValueChange={(value) => setSolution(value as Solution)}>
-              <SelectTrigger id="solution" className="mt-2 text-base h-11">
+              <SelectTrigger id="solution" className="mt-1.5 text-sm h-10">
                 <SelectValue placeholder="Select solution" />
               </SelectTrigger>
               <SelectContent>
                 {SOLUTIONS.map((sol) => (
-                  <SelectItem key={sol} value={sol} className="text-base">
+                  <SelectItem key={sol} value={sol} className="text-sm">
                     {sol}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {errors.solution && <p className="text-sm text-destructive mt-1">{errors.solution}</p>}
+            {errors.solution && <p className="text-xs text-destructive mt-1">{errors.solution}</p>}
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="startDate" className="text-base font-semibold">
+              <Label htmlFor="startDate" className="text-sm font-semibold">
                 Start Date <span className="text-destructive">*</span>
               </Label>
               <Input
@@ -178,13 +178,13 @@ export const AddEventModal = ({ open, onClose, onAddEvent, editEvent }: AddEvent
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
-                className="mt-2 text-base h-11"
+                className="mt-1.5 text-sm h-10"
               />
-              {errors.startDate && <p className="text-sm text-destructive mt-1">{errors.startDate}</p>}
+              {errors.startDate && <p className="text-xs text-destructive mt-1">{errors.startDate}</p>}
             </div>
 
             <div>
-              <Label htmlFor="endDate" className="text-base font-semibold">
+              <Label htmlFor="endDate" className="text-sm font-semibold">
                 End Date
               </Label>
               <Input
@@ -192,92 +192,92 @@ export const AddEventModal = ({ open, onClose, onAddEvent, editEvent }: AddEvent
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                className="mt-2 text-base h-11"
+                className="mt-1.5 text-sm h-10"
               />
-              {errors.endDate && <p className="text-sm text-destructive mt-1">{errors.endDate}</p>}
+              {errors.endDate && <p className="text-xs text-destructive mt-1">{errors.endDate}</p>}
             </div>
           </div>
 
           <div>
-            <Label htmlFor="time" className="text-base font-semibold">
+            <Label htmlFor="time" className="text-sm font-semibold">
               Time
             </Label>
             <Input
               id="time"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="mt-2 text-base h-11"
+              className="mt-1.5 text-sm h-10"
               placeholder="e.g. 2:00 PM - 4:00 PM"
             />
           </div>
 
           <div>
-            <Label htmlFor="location" className="text-base font-semibold">
+            <Label htmlFor="location" className="text-sm font-semibold">
               Location <span className="text-destructive">*</span>
             </Label>
             <Select value={locationOption} onValueChange={setLocationOption}>
-              <SelectTrigger id="location" className="mt-2 text-base h-11">
+              <SelectTrigger id="location" className="mt-1.5 text-sm h-10">
                 <SelectValue placeholder="Select location" />
               </SelectTrigger>
               <SelectContent>
                 {LOCATION_OPTIONS.map((loc) => (
-                  <SelectItem key={loc} value={loc} className="text-base">
+                  <SelectItem key={loc} value={loc} className="text-sm">
                     {loc}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
-            {errors.location && <p className="text-sm text-destructive mt-1">{errors.location}</p>}
+            {errors.location && <p className="text-xs text-destructive mt-1">{errors.location}</p>}
           </div>
 
           {locationOption === "직접입력" && (
             <div>
-              <Label htmlFor="customLocation" className="text-base font-semibold">
+              <Label htmlFor="customLocation" className="text-sm font-semibold">
                 Enter Location <span className="text-destructive">*</span>
               </Label>
               <Input
                 id="customLocation"
                 value={customLocation}
                 onChange={(e) => setCustomLocation(e.target.value)}
-                className="mt-2 text-base h-11"
+                className="mt-1.5 text-sm h-10"
                 placeholder="Enter custom location"
               />
-              {errors.customLocation && <p className="text-sm text-destructive mt-1">{errors.customLocation}</p>}
+              {errors.customLocation && <p className="text-xs text-destructive mt-1">{errors.customLocation}</p>}
             </div>
           )}
 
           <div>
-            <Label htmlFor="registrationUrl" className="text-base font-semibold">
+            <Label htmlFor="registrationUrl" className="text-sm font-semibold">
               Registration Page URL
             </Label>
             <Input
               id="registrationUrl"
               value={registrationUrl}
               onChange={(e) => setRegistrationUrl(e.target.value)}
-              className="mt-2 text-base h-11"
+              className="mt-1.5 text-sm h-10"
               placeholder="https://..."
             />
           </div>
 
           <div>
-            <Label htmlFor="vivaEngageUrl" className="text-base font-semibold">
+            <Label htmlFor="vivaEngageUrl" className="text-sm font-semibold">
               Viva Engage URL
             </Label>
             <Input
               id="vivaEngageUrl"
               value={vivaEngageUrl}
               onChange={(e) => setVivaEngageUrl(e.target.value)}
-              className="mt-2 text-base h-11"
+              className="mt-1.5 text-sm h-10"
               placeholder="https://..."
             />
           </div>
         </div>
 
         <div className="flex gap-3 justify-end pt-4">
-          <Button variant="outline" onClick={handleClose} className="text-base h-11 px-6">
+          <Button variant="outline" onClick={handleClose} className="text-sm h-10 px-5">
             Cancel
           </Button>
-          <Button onClick={handleSubmit} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base h-11 px-6">
+          <Button onClick={handleSubmit} className="bg-accent text-accent-foreground hover:bg-accent/90 text-sm h-10 px-5">
             {editEvent ? "Update Event" : "Add Event"}
           </Button>
         </div>

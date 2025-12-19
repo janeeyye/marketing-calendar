@@ -31,7 +31,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         }}
       >
         <ArrowRight size={14} weight="bold" className="flex-shrink-0" style={{ color: solutionColor }} />
-        <span className="text-sm truncate flex-1 italic" style={{ color: solutionColor }}>
+        <span className="text-xs truncate flex-1 italic" style={{ color: solutionColor }}>
           {event.title}
         </span>
       </div>
@@ -45,17 +45,17 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
       style={{ borderLeftColor: solutionColor }}
     >
       <div className="flex items-start justify-between gap-2">
-        <h3 className="text-[15px] font-medium leading-snug line-clamp-2 flex-1">
+        <h3 className="text-sm font-medium leading-snug line-clamp-2 flex-1">
           {event.title}
         </h3>
         {position === 'start' && event.startDate !== effectiveEndDate && (
-          <ArrowRight size={16} weight="bold" className="flex-shrink-0 mt-0.5" style={{ color: solutionColor }} />
+          <ArrowRight size={14} weight="bold" className="flex-shrink-0 mt-0.5" style={{ color: solutionColor }} />
         )}
       </div>
       
       <div className="flex flex-col gap-0.5">
-        <div className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
-          <MapPin size={13} weight="fill" />
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <MapPin size={12} weight="fill" />
           <span className="truncate">{event.location}</span>
         </div>
         
@@ -64,18 +64,18 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
             {event.registrationUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
-                className="flex items-center gap-1 text-[13px] font-medium text-ring hover:underline transition-colors"
+                className="flex items-center gap-1 text-xs font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={13} weight="bold" />
+                <LinkIcon size={12} weight="bold" />
                 <span>Reg</span>
               </button>
             )}
             {event.vivaEngageUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
-                className="flex items-center gap-1 text-[13px] font-medium text-ring hover:underline transition-colors"
+                className="flex items-center gap-1 text-xs font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={13} weight="bold" />
+                <LinkIcon size={12} weight="bold" />
                 <span>Viva</span>
               </button>
             )}

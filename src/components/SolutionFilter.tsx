@@ -9,7 +9,7 @@ interface SolutionFilterProps {
 export const SolutionFilter = ({ activeFilters, onToggleFilter }: SolutionFilterProps) => {
   return (
     <div className="flex items-center gap-3 flex-wrap">
-      <span className="text-base font-semibold text-foreground">Filter:</span>
+      <span className="text-sm font-semibold text-foreground">Filter:</span>
       {SOLUTIONS.map((solution) => {
         const isActive = activeFilters.has(solution);
         const color = getSolutionColor(solution);
@@ -18,7 +18,7 @@ export const SolutionFilter = ({ activeFilters, onToggleFilter }: SolutionFilter
           <Button
             key={solution}
             onClick={() => onToggleFilter(solution)}
-            className="rounded-full px-5 py-2.5 h-auto text-base font-medium transition-all duration-200"
+            className="rounded-full px-4 py-2 h-auto text-sm font-medium transition-all duration-200"
             style={
               isActive
                 ? {

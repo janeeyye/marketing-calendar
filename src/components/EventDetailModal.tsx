@@ -68,13 +68,13 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
         </button>
         
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold pr-12">{event.title}</DialogTitle>
+          <DialogTitle className="text-xl font-semibold pr-12">{event.title}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-5 pt-2">
           <div>
             <div
-              className="inline-block px-3.5 py-1.5 rounded-full text-base font-medium text-white"
+              className="inline-block px-3 py-1 rounded-full text-sm font-medium text-white"
               style={{ backgroundColor: solutionColor }}
             >
               {event.solution}
@@ -82,32 +82,32 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
           </div>
           
           <div className="flex items-start gap-3">
-            <CalendarBlank size={22} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
+            <CalendarBlank size={20} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
             <div>
-              <div className="text-base font-medium text-muted-foreground mb-1">Date</div>
-              <div className="text-lg">{formatDateRange()}</div>
-              {event.time && <div className="text-base text-muted-foreground mt-1">{event.time}</div>}
+              <div className="text-sm font-medium text-muted-foreground mb-1">Date</div>
+              <div className="text-base">{formatDateRange()}</div>
+              {event.time && <div className="text-sm text-muted-foreground mt-1">{event.time}</div>}
             </div>
           </div>
           
           <div className="flex items-start gap-3">
-            <MapPin size={22} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
+            <MapPin size={20} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
             <div>
-              <div className="text-base font-medium text-muted-foreground mb-1">Location</div>
-              <div className="text-lg">{event.location}</div>
+              <div className="text-sm font-medium text-muted-foreground mb-1">Location</div>
+              <div className="text-base">{event.location}</div>
             </div>
           </div>
           
           {event.registrationUrl && (
             <div className="flex items-start gap-3">
-              <LinkIcon size={22} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
+              <LinkIcon size={20} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
               <div>
-                <div className="text-base font-medium text-muted-foreground mb-1">Registration Page</div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Registration Page</div>
                 <a
                   href={event.registrationUrl.startsWith('http') ? event.registrationUrl : `https://${event.registrationUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-ring hover:underline break-all"
+                  className="text-base text-ring hover:underline break-all"
                 >
                   {event.registrationUrl}
                 </a>
@@ -117,14 +117,14 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
           
           {event.vivaEngageUrl && (
             <div className="flex items-start gap-3">
-              <LinkIcon size={22} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
+              <LinkIcon size={20} weight="fill" className="text-muted-foreground mt-0.5 flex-shrink-0" />
               <div>
-                <div className="text-base font-medium text-muted-foreground mb-1">Viva Engage</div>
+                <div className="text-sm font-medium text-muted-foreground mb-1">Viva Engage</div>
                 <a
                   href={event.vivaEngageUrl.startsWith('http') ? event.vivaEngageUrl : `https://${event.vivaEngageUrl}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg text-ring hover:underline break-all"
+                  className="text-base text-ring hover:underline break-all"
                 >
                   {event.vivaEngageUrl}
                 </a>

@@ -99,7 +99,7 @@ function App() {
               <CaretLeft size={20} weight="bold" />
             </Button>
             
-            <h1 className="text-3xl font-semibold">
+            <h1 className="text-2xl font-semibold">
               {getMonthName(month)} {year}
             </h1>
             
@@ -115,9 +115,9 @@ function App() {
 
           <Button
             onClick={() => setIsAddModalOpen(true)}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-6 py-3 h-auto text-base transition-all duration-150 hover:-translate-y-0.5"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-5 py-2.5 h-auto text-sm transition-all duration-150 hover:-translate-y-0.5"
           >
-            <Plus size={20} weight="bold" className="mr-2" />
+            <Plus size={18} weight="bold" className="mr-2" />
             Add Event
           </Button>
         </div>

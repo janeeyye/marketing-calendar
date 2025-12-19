@@ -28,7 +28,7 @@ export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: Cal
         {WEEKDAY_NAMES.map((day) => (
           <div
             key={day}
-            className="p-4 text-center text-base font-semibold text-muted-foreground bg-muted/30"
+            className="p-3 text-center text-sm font-semibold text-muted-foreground bg-muted/30"
           >
             {day}
           </div>
@@ -48,7 +48,7 @@ export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: Cal
                 }`}
               >
                 <div
-                  className={`text-base font-medium ${
+                  className={`text-sm font-medium ${
                     day.isCurrentMonth ? 'text-foreground' : 'text-muted-foreground'
                   }`}
                 >
