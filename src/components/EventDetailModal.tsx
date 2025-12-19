@@ -58,7 +58,7 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
   
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[540px]">
+      <DialogContent className="sm:max-w-[700px]">
         <button
           onClick={onClose}
           className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10 text-foreground"
@@ -68,18 +68,7 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
         </button>
         
         <DialogHeader>
-          <DialogTitle className="text-2xl font-semibold pr-20">{event.title}</DialogTitle>
-          {onEdit && (
-            <Button
-              onClick={handleEdit}
-              variant="outline"
-              size="sm"
-              className="absolute right-14 top-4 h-9"
-            >
-              <PencilSimple size={16} weight="bold" className="mr-1.5" />
-              Edit
-            </Button>
-          )}
+          <DialogTitle className="text-2xl font-semibold pr-12">{event.title}</DialogTitle>
         </DialogHeader>
         
         <div className="space-y-5 pt-2">
@@ -144,16 +133,28 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
           )}
         </div>
         
-        {onDelete && (
-          <div className="flex justify-end pt-4 border-t">
-            <Button
-              onClick={handleDelete}
-              variant="destructive"
-              className="gap-2"
-            >
-              <Trash size={18} weight="bold" />
-              Delete Event
-            </Button>
+        {(onEdit || onDelete) && (
+          <div className="flex justify-end gap-3 pt-4 border-t">
+            {onEdit && (
+              <Button
+                onClick={handleEdit}
+                variant="outline"
+                className="gap-2"
+              >
+                <PencilSimple size={18} weight="bold" />
+                Edit
+              </Button>
+            )}
+            {onDelete && (
+              <Button
+                onClick={handleDelete}
+                variant="destructive"
+                className="gap-2"
+              >
+                <Trash size={18} weight="bold" />
+                Delete
+              </Button>
+            )}
           </div>
         )}
       </DialogContent>
