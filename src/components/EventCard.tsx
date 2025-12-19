@@ -34,11 +34,6 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         <span className="text-sm truncate flex-1 italic" style={{ color: solutionColor }}>
           {event.title}
         </span>
-        {event.time && (
-          <span className="text-xs text-muted-foreground whitespace-nowrap">
-            계속됨
-          </span>
-        )}
       </div>
     );
   }
@@ -62,12 +57,6 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         <MapPin size={14} weight="fill" />
         <span className="truncate">{event.location}</span>
       </div>
-      
-      {event.time && (
-        <div className="text-sm text-muted-foreground">
-          {event.time}
-        </div>
-      )}
       
       {(event.registrationUrl || event.vivaEngageUrl) && (
         <div className="flex items-center gap-2 mt-0.5">
