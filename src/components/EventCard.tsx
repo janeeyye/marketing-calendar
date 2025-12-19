@@ -41,7 +41,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
   return (
     <div
       onClick={onClick}
-      className="bg-card rounded-lg p-3.5 cursor-pointer transition-all duration-150 hover:shadow-md border-l-[5px] flex flex-col gap-2"
+      className="bg-card rounded-lg p-2.5 cursor-pointer transition-all duration-150 hover:shadow-md border-l-[5px] flex flex-col gap-1"
       style={{ borderLeftColor: solutionColor }}
     >
       <div className="flex items-start justify-between gap-2">
@@ -53,7 +53,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         )}
       </div>
       
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-0.5">
         <div className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
           <MapPin size={13} weight="fill" />
           <span className="truncate">{event.location}</span>
