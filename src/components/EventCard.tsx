@@ -24,12 +24,20 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
     return (
       <div
         onClick={onClick}
-        className="h-5 rounded flex items-center justify-between px-2 cursor-pointer transition-all duration-150 hover:opacity-80"
-        style={{ backgroundColor: solutionColor }}
+        className="h-6 rounded flex items-center gap-2 px-2 cursor-pointer transition-all duration-150 hover:opacity-90 border-l-4"
+        style={{ 
+          borderLeftColor: solutionColor,
+          backgroundColor: 'oklch(0.98 0.005 75)'
+        }}
       >
-        <ArrowLeft size={12} weight="bold" className="text-white flex-shrink-0" />
-        {position === 'middle' && (
-          <ArrowRight size={12} weight="bold" className="text-white flex-shrink-0" />
+        <ArrowRight size={14} weight="bold" className="flex-shrink-0" style={{ color: solutionColor }} />
+        <span className="text-sm truncate flex-1 italic" style={{ color: solutionColor }}>
+          {event.title}
+        </span>
+        {event.time && (
+          <span className="text-xs text-muted-foreground whitespace-nowrap">
+            계속됨
+          </span>
         )}
       </div>
     );
