@@ -43,7 +43,7 @@ export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: Cal
             return (
               <div
                 key={dayIndex}
-                className={`p-3 border-r border-border last:border-r-0 flex flex-col gap-2.5 min-h-[120px] ${
+                className={`p-3.5 border-r border-border last:border-r-0 flex flex-col gap-2.5 min-h-[120px] ${
                   !day.isCurrentMonth ? 'bg-muted/20' : ''
                 }`}
               >
