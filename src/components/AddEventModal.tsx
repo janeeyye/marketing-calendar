@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,16 +15,42 @@ interface AddEventModalProps {
 }
 
 export const AddEventModal = ({ open, onClose, onAddEvent, editEvent }: AddEventModalProps) => {
-  const [title, setTitle] = useState(editEvent?.title || "");
-  const [solution, setSolution] = useState<Solution | "">(editEvent?.solution || "");
-  const [startDate, setStartDate] = useState(editEvent?.startDate || "");
-  const [endDate, setEndDate] = useState(editEvent?.endDate || "");
-  const [time, setTime] = useState(editEvent?.time || "");
-  const [locationOption, setLocationOption] = useState(editEvent?.location || "");
+  const [title, setTitle] = useState("");
+  const [solution, setSolution] = useState<Solution | "">("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [time, setTime] = useState("");
+  const [locationOption, setLocationOption] = useState("");
   const [customLocation, setCustomLocation] = useState("");
-  const [registrationUrl, setRegistrationUrl] = useState(editEvent?.registrationUrl || "");
-  const [vivaEngageUrl, setVivaEngageUrl] = useState(editEvent?.vivaEngageUrl || "");
+  const [registrationUrl, setRegistrationUrl] = useState("");
+  const [vivaEngageUrl, setVivaEngageUrl] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (open && editEvent) {
+      setTitle(editEvent.title || "");
+      setSolution(editEvent.solution || "");
+      setStartDate(editEvent.startDate || "");
+      setEndDate(editEvent.endDate || "");
+      setTime(editEvent.time || "");
+      
+      const predefinedLocations = LOCATION_OPTIONS.slice(0, -1);
+      const isCustomLocation = !predefinedLocations.some(loc => loc === editEvent.location);
+      if (isCustomLocation) {
+        setLocationOption("직접입력");
+        setCustomLocation(editEvent.location || "");
+      } else {
+        setLocationOption(editEvent.location || "");
+        setCustomLocation("");
+      }
+      
+      setRegistrationUrl(editEvent.registrationUrl || "");
+      setVivaEngageUrl(editEvent.vivaEngageUrl || "");
+      setErrors({});
+    } else if (open && !editEvent) {
+      resetForm();
+    }
+  }, [open, editEvent]);
 
   const resetForm = () => {
     setTitle("");
