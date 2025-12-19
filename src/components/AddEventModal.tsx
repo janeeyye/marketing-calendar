@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Event, SOLUTIONS, LOCATION_OPTIONS, Solution } from "@/lib/types";
-import { X } from "@phosphor-icons/react";
 
 interface AddEventModalProps {
   open: boolean;
@@ -98,7 +97,9 @@ export const AddEventModal = ({ open, onClose, onAddEvent, editEvent }: AddEvent
           onClick={handleClose}
           className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10"
         >
-          <X size={24} weight="bold" />
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
           <span className="sr-only">Close</span>
         </button>
 
