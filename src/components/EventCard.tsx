@@ -24,7 +24,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
     return (
       <div
         onClick={onClick}
-        className="h-6 rounded flex items-center gap-2 px-2 cursor-pointer transition-all duration-150 hover:opacity-90 border-l-4"
+        className="h-6 rounded flex items-center gap-2 px-2 cursor-pointer transition-all duration-150 hover:opacity-90 border-l-[5px]"
         style={{ 
           borderLeftColor: solutionColor,
           backgroundColor: 'oklch(0.98 0.005 75)'
@@ -41,7 +41,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
   return (
     <div
       onClick={onClick}
-      className="bg-card rounded-lg p-3.5 cursor-pointer transition-all duration-150 hover:shadow-md border-l-4 flex flex-col gap-2"
+      className="bg-card rounded-lg p-3.5 cursor-pointer transition-all duration-150 hover:shadow-md border-l-[5px] flex flex-col gap-2"
       style={{ borderLeftColor: solutionColor }}
     >
       <div className="flex items-start justify-between gap-2">
