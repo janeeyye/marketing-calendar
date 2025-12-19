@@ -38,25 +38,25 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
   return (
     <div
       onClick={onClick}
-      className="bg-card rounded-lg p-3 cursor-pointer transition-all duration-150 hover:shadow-md border-l-4 flex flex-col gap-1.5"
+      className="bg-card rounded-lg p-3.5 cursor-pointer transition-all duration-150 hover:shadow-md border-l-4 flex flex-col gap-2"
       style={{ borderLeftColor: solutionColor }}
     >
       <div className="flex items-start justify-between gap-2">
-        <h3 className="text-sm font-medium leading-snug line-clamp-2 flex-1">
+        <h3 className="text-base font-medium leading-snug line-clamp-2 flex-1">
           {event.title}
         </h3>
         {position === 'start' && event.startDate !== effectiveEndDate && (
-          <ArrowRight size={14} weight="bold" className="flex-shrink-0 mt-0.5" style={{ color: solutionColor }} />
+          <ArrowRight size={16} weight="bold" className="flex-shrink-0 mt-0.5" style={{ color: solutionColor }} />
         )}
       </div>
       
-      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-        <MapPin size={12} weight="fill" />
+      <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+        <MapPin size={14} weight="fill" />
         <span className="truncate">{event.location}</span>
       </div>
       
       {event.time && (
-        <div className="text-xs text-muted-foreground">
+        <div className="text-sm text-muted-foreground">
           {event.time}
         </div>
       )}
@@ -66,19 +66,19 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
           {event.registrationUrl && (
             <button
               onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
-              className="flex items-center gap-1 text-xs text-ring hover:underline transition-colors"
+              className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
             >
-              <LinkIcon size={12} weight="bold" />
-              <span>Registration</span>
+              <LinkIcon size={14} weight="bold" />
+              <span>Reg</span>
             </button>
           )}
           {event.vivaEngageUrl && (
             <button
               onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
-              className="flex items-center gap-1 text-xs text-ring hover:underline transition-colors"
+              className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
             >
-              <LinkIcon size={12} weight="bold" />
-              <span>Viva Engage</span>
+              <LinkIcon size={14} weight="bold" />
+              <span>Viva</span>
             </button>
           )}
         </div>

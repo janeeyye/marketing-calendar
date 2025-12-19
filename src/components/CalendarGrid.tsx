@@ -28,7 +28,7 @@ export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: Cal
         {WEEKDAY_NAMES.map((day) => (
           <div
             key={day}
-            className="p-3 text-center text-sm font-semibold text-muted-foreground bg-muted/30"
+            className="p-4 text-center text-base font-semibold text-muted-foreground bg-muted/30"
           >
             {day}
           </div>
@@ -43,19 +43,19 @@ export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: Cal
             return (
               <div
                 key={dayIndex}
-                className={`p-2 border-r border-border last:border-r-0 flex flex-col gap-2 min-h-[100px] ${
+                className={`p-3 border-r border-border last:border-r-0 flex flex-col gap-2.5 min-h-[120px] ${
                   !day.isCurrentMonth ? 'bg-muted/20' : ''
                 }`}
               >
                 <div
-                  className={`text-xs font-medium ${
+                  className={`text-base font-medium ${
                     day.isCurrentMonth ? 'text-foreground' : 'text-muted-foreground'
                   }`}
                 >
                   {day.dayOfMonth}
                 </div>
                 
-                <div className="flex flex-col gap-2 flex-1">
+                <div className="flex flex-col gap-2.5 flex-1">
                   {dayEvents.map((event) => (
                     <EventCard
                       key={event.id}

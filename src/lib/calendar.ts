@@ -53,7 +53,7 @@ export const formatDate = (date: Date): string => {
 };
 
 export const parseDate = (dateString: string): Date => {
-  return new Date(dateString + 'T00:00:00');
+  return new Date(dateString + 'T00:00:00+09:00');
 };
 
 export const getMonthName = (month: number): string => {
@@ -75,4 +75,15 @@ export const getEventPosition = (date: string, startDate: string, endDate?: stri
   if (date === startDate) return 'start';
   if (date === effectiveEndDate) return 'end';
   return 'middle';
+};
+
+export const getKoreaDateString = (): string => {
+  const now = new Date();
+  const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  return formatDate(koreaTime);
+};
+
+export const formatDateForInput = (date: Date): string => {
+  const koreaTime = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  return formatDate(koreaTime);
 };

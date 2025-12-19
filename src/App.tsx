@@ -17,6 +17,7 @@ function App() {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -48,13 +49,38 @@ function App() {
   };
 
   const handleAddEvent = (eventData: Omit<Event, "id">) => {
-    const newEvent: Event = {
-      ...eventData,
-      id: `event-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-    };
-    
-    setEvents((currentEvents) => [...(currentEvents || []), newEvent]);
-    toast.success("Event added successfully!");
+    if (editingEvent) {
+      setEvents((currentEvents) =>
+        (currentEvents || []).map((e) =>
+          e.id === editingEvent.id ? { ...eventData, id: editingEvent.id } : e
+        )
+      );
+      toast.success("Event updated successfully!");
+      setEditingEvent(null);
+    } else {
+      const newEvent: Event = {
+        ...eventData,
+        id: `event-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+      };
+      
+      setEvents((currentEvents) => [...(currentEvents || []), newEvent]);
+      toast.success("Event added successfully!");
+    }
+  };
+
+  const handleEditEvent = (event: Event) => {
+    setEditingEvent(event);
+    setIsAddModalOpen(true);
+  };
+
+  const handleDeleteEvent = (eventId: string) => {
+    setEvents((currentEvents) => (currentEvents || []).filter((e) => e.id !== eventId));
+    toast.success("Event deleted successfully!");
+  };
+
+  const handleCloseAddModal = () => {
+    setIsAddModalOpen(false);
+    setEditingEvent(null);
   };
 
   return (
@@ -62,18 +88,18 @@ function App() {
       <Toaster position="top-right" />
       
       <div className="max-w-[1400px] mx-auto p-6">
-        <div className="mb-6 flex items-center justify-between">
+        <div className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button
               variant="outline"
               size="icon"
               onClick={handlePrevMonth}
-              className="rounded-full h-9 w-9"
+              className="rounded-full h-10 w-10"
             >
-              <CaretLeft size={18} weight="bold" />
+              <CaretLeft size={20} weight="bold" />
             </Button>
             
-            <h1 className="text-2xl font-semibold">
+            <h1 className="text-3xl font-semibold">
               {getMonthName(month)} {year}
             </h1>
             
@@ -81,22 +107,22 @@ function App() {
               variant="outline"
               size="icon"
               onClick={handleNextMonth}
-              className="rounded-full h-9 w-9"
+              className="rounded-full h-10 w-10"
             >
-              <CaretRight size={18} weight="bold" />
+              <CaretRight size={20} weight="bold" />
             </Button>
           </div>
 
           <Button
             onClick={() => setIsAddModalOpen(true)}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-5 py-2.5 h-auto transition-all duration-150 hover:-translate-y-0.5"
+            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-6 py-3 h-auto text-base transition-all duration-150 hover:-translate-y-0.5"
           >
-            <Plus size={18} weight="bold" className="mr-1.5" />
+            <Plus size={20} weight="bold" className="mr-2" />
             Add Event
           </Button>
         </div>
 
-        <div className="mb-6">
+        <div className="mb-7">
           <SolutionFilter
             activeFilters={activeFilters}
             onToggleFilter={handleToggleFilter}
@@ -118,12 +144,15 @@ function App() {
           setIsDetailModalOpen(false);
           setSelectedEvent(null);
         }}
+        onEdit={handleEditEvent}
+        onDelete={handleDeleteEvent}
       />
 
       <AddEventModal
         open={isAddModalOpen}
-        onClose={() => setIsAddModalOpen(false)}
+        onClose={handleCloseAddModal}
         onAddEvent={handleAddEvent}
+        editEvent={editingEvent}
       />
     </div>
   );
