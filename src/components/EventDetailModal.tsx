@@ -60,9 +60,9 @@ export const EventDetailModal = ({ event, open, onClose, onEdit, onDelete }: Eve
       <DialogContent className="sm:max-w-[540px]">
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10"
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none z-10 text-foreground"
         >
-          <X size={24} weight="bold" />
+          <X size={20} weight="regular" />
           <span className="sr-only">Close</span>
         </button>
         
