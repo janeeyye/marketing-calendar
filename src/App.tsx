@@ -87,7 +87,7 @@ function App() {
     <div className="min-h-screen bg-background">
       <Toaster position="top-right" />
       
-      <div className="max-w-[1400px] mx-auto p-6">
+      <div className="max-w-[1800px] mx-auto p-6">
         <div className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Button
