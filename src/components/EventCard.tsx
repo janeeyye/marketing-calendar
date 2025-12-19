@@ -54,8 +54,8 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
       </div>
       
       <div className="flex flex-col gap-1">
-        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-          <MapPin size={14} weight="fill" />
+        <div className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
+          <MapPin size={13} weight="fill" />
           <span className="truncate">{event.location}</span>
         </div>
         
@@ -64,18 +64,18 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
             {event.registrationUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
-                className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
+                className="flex items-center gap-1 text-[13px] font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={14} weight="bold" />
+                <LinkIcon size={13} weight="bold" />
                 <span>Reg</span>
               </button>
             )}
             {event.vivaEngageUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
-                className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
+                className="flex items-center gap-1 text-[13px] font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={14} weight="bold" />
+                <LinkIcon size={13} weight="bold" />
                 <span>Viva</span>
               </button>
             )}
