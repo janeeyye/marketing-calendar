@@ -16,7 +16,8 @@ export const EventDetailModal = ({ event, open, onClose }: EventDetailModalProps
   const solutionColor = getSolutionColor(event.solution);
   
   const formatDateRange = () => {
-    if (event.startDate === event.endDate) {
+    const effectiveEndDate = event.endDate || event.startDate;
+    if (event.startDate === effectiveEndDate) {
       return new Date(event.startDate + 'T00:00:00').toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
@@ -27,7 +28,7 @@ export const EventDetailModal = ({ event, open, onClose }: EventDetailModalProps
       month: 'short',
       day: 'numeric'
     });
-    const end = new Date(event.endDate + 'T00:00:00').toLocaleDateString('en-US', {
+    const end = new Date(effectiveEndDate + 'T00:00:00').toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric'

@@ -1,4 +1,4 @@
-import { MapPin, ArrowRight, ArrowLeft } from "@phosphor-icons/react";
+import { MapPin, ArrowRight, ArrowLeft, Link as LinkIcon } from "@phosphor-icons/react";
 import { Event } from "@/lib/types";
 import { getSolutionColor } from "@/lib/types";
 import { getEventPosition } from "@/lib/calendar";
@@ -10,8 +10,15 @@ interface EventCardProps {
 }
 
 export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
-  const position = getEventPosition(dateString, event.startDate, event.endDate);
+  const effectiveEndDate = event.endDate || event.startDate;
+  const position = getEventPosition(dateString, event.startDate, effectiveEndDate);
   const solutionColor = getSolutionColor(event.solution);
+  
+  const handleLinkClick = (e: React.MouseEvent, url: string) => {
+    e.stopPropagation();
+    const fullUrl = url.startsWith('http') ? url : `https://${url}`;
+    window.open(fullUrl, '_blank', 'noopener,noreferrer');
+  };
   
   if (position === 'middle' || position === 'end') {
     return (
@@ -38,7 +45,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         <h3 className="text-sm font-medium leading-snug line-clamp-2 flex-1">
           {event.title}
         </h3>
-        {position === 'start' && event.startDate !== event.endDate && (
+        {position === 'start' && event.startDate !== effectiveEndDate && (
           <ArrowRight size={14} weight="bold" className="flex-shrink-0 mt-0.5" style={{ color: solutionColor }} />
         )}
       </div>
@@ -51,6 +58,29 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
       {event.time && (
         <div className="text-xs text-muted-foreground">
           {event.time}
+        </div>
+      )}
+      
+      {(event.registrationUrl || event.vivaEngageUrl) && (
+        <div className="flex items-center gap-2 mt-0.5">
+          {event.registrationUrl && (
+            <button
+              onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
+              className="flex items-center gap-1 text-xs text-ring hover:underline transition-colors"
+            >
+              <LinkIcon size={12} weight="bold" />
+              <span>Registration</span>
+            </button>
+          )}
+          {event.vivaEngageUrl && (
+            <button
+              onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
+              className="flex items-center gap-1 text-xs text-ring hover:underline transition-colors"
+            >
+              <LinkIcon size={12} weight="bold" />
+              <span>Viva Engage</span>
+            </button>
+          )}
         </div>
       )}
     </div>

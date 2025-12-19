@@ -64,13 +64,15 @@ export const getMonthName = (month: number): string => {
   return names[month];
 };
 
-export const isDateInRange = (date: string, startDate: string, endDate: string): boolean => {
-  return date >= startDate && date <= endDate;
+export const isDateInRange = (date: string, startDate: string, endDate?: string): boolean => {
+  const effectiveEndDate = endDate || startDate;
+  return date >= startDate && date <= effectiveEndDate;
 };
 
-export const getEventPosition = (date: string, startDate: string, endDate: string): 'start' | 'middle' | 'end' | 'single' => {
-  if (startDate === endDate) return 'single';
+export const getEventPosition = (date: string, startDate: string, endDate?: string): 'start' | 'middle' | 'end' | 'single' => {
+  const effectiveEndDate = endDate || startDate;
+  if (startDate === effectiveEndDate) return 'single';
   if (date === startDate) return 'start';
-  if (date === endDate) return 'end';
+  if (date === effectiveEndDate) return 'end';
   return 'middle';
 };

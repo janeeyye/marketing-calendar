@@ -55,9 +55,6 @@ export const AddEventModal = ({ open, onClose, onAddEvent }: AddEventModalProps)
     if (!startDate) {
       newErrors.startDate = "Start date is required";
     }
-    if (!endDate) {
-      newErrors.endDate = "End date is required";
-    }
     if (startDate && endDate && startDate > endDate) {
       newErrors.endDate = "End date must be after start date";
     }
@@ -83,7 +80,7 @@ export const AddEventModal = ({ open, onClose, onAddEvent }: AddEventModalProps)
       title: title.trim(),
       solution: solution as Solution,
       startDate,
-      endDate,
+      endDate: endDate.trim() || undefined,
       time: time.trim() || undefined,
       location,
       registrationUrl: registrationUrl.trim() || undefined,
@@ -159,7 +156,7 @@ export const AddEventModal = ({ open, onClose, onAddEvent }: AddEventModalProps)
 
             <div>
               <Label htmlFor="endDate" className="text-sm font-semibold">
-                End Date <span className="text-destructive">*</span>
+                End Date
               </Label>
               <Input
                 id="endDate"

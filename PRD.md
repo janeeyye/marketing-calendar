@@ -35,17 +35,17 @@ This app manages calendar state, filter toggles, modal interactions, and form va
 
 **Add Marketing Event Modal**
 - Functionality: Form modal for creating new marketing events with validation
-- Purpose: Enable users to add events with required and optional fields
+- Purpose: Enable users to add events with required and optional fields, with end date being optional since most events are single-day
 - Trigger: User clicks "+ Add Event" button in top-right
-- Progression: Click button → Modal opens with empty form → Fill required fields (marked with *) → Select or input location → Click Add Event → Validation checks → Event created and modal closes → Calendar updates immediately
-- Success criteria: Required field validation works, location dropdown + custom input functions, dates validate properly, new events appear immediately in correct date cells
+- Progression: Click button → Modal opens with empty form → Fill required fields (marked with *) → Optionally set end date for multi-day events → Select or input location → Click Add Event → Validation checks → Event created and modal closes → Calendar updates immediately
+- Success criteria: Required field validation works (title, solution, start date, location), end date is optional and defaults to start date if empty, location dropdown + custom input functions, dates validate properly, new events appear immediately in correct date cells
 
 **Multi-Day Event Visualization**
-- Functionality: Events spanning multiple days show as full card on start date, compact continuation bars on subsequent days
-- Purpose: Clearly communicate event duration across multiple calendar days
-- Trigger: Event is created with startDate ≠ endDate
-- Progression: Event added → Full card appears on startDate with → indicator → Compact mini-cards (18-24px) appear on middle dates with ← → indicators → End date shows mini-card with only ← indicator → All cards share solution color
-- Success criteria: Visual continuity is clear, arrows indicate direction, any part of multi-day event is clickable, mini-cards stack properly with other events
+- Functionality: Events spanning multiple days show as full card on start date with clickable links if URLs provided, compact continuation bars on subsequent days
+- Purpose: Clearly communicate event duration across multiple calendar days with direct access to registration and engagement links
+- Trigger: Event is created with endDate ≠ startDate (or endDate is empty for single-day events)
+- Progression: Event added → Full card appears on startDate with → indicator and clickable URL links if provided → Compact mini-cards (18-24px) appear on middle dates with ← → indicators → End date shows mini-card with only ← indicator → All cards share solution color → Registration/Viva Engage links clickable directly from calendar view
+- Success criteria: Visual continuity is clear, arrows indicate direction, any part of multi-day event is clickable to view details, mini-cards stack properly with other events, URL links in calendar cards open in new tab without opening detail modal
 
 **Month Navigation**
 - Functionality: Previous/next buttons to move between months
@@ -76,7 +76,7 @@ A warm, professional palette with distinctive solution colors for instant recogn
 
 - **Primary Color**: Deep charcoal `oklch(0.25 0 0)` for primary text and UI elements - conveys professionalism and readability
 - **Secondary Colors**: 
-  - All Business Solutions: `oklch(0.62 0.15 35)` bright orange - energetic and all-encompassing
+  - AI Business Solutions: `oklch(0.62 0.15 35)` bright orange - energetic and innovative
   - Cloud and AI Platforms: `oklch(0.65 0.12 160)` vibrant green - growth and innovation
   - Security: `oklch(0.55 0.15 240)` strong blue - trust and protection
   - All CSAs: `oklch(0.60 0.18 290)` rich purple - premium and strategic
@@ -134,6 +134,7 @@ Animations should feel responsive and purposeful, never delaying user intent. Fi
   - Plus (Phosphor): Add Event button
   - X (Phosphor): Modal close buttons
   - ArrowLeft/ArrowRight (Phosphor): Multi-day event continuation indicators
+  - Link (Phosphor): URL link indicators for Registration Page and Viva Engage on event cards
   
 - **Spacing**:
   - Calendar outer padding: p-6
