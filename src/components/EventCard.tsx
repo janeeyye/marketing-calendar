@@ -53,33 +53,35 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
         )}
       </div>
       
-      <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
-        <MapPin size={14} weight="fill" />
-        <span className="truncate">{event.location}</span>
-      </div>
-      
-      {(event.registrationUrl || event.vivaEngageUrl) && (
-        <div className="flex items-center gap-2">
-          {event.registrationUrl && (
-            <button
-              onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
-              className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
-            >
-              <LinkIcon size={14} weight="bold" />
-              <span>Reg</span>
-            </button>
-          )}
-          {event.vivaEngageUrl && (
-            <button
-              onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
-              className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
-            >
-              <LinkIcon size={14} weight="bold" />
-              <span>Viva</span>
-            </button>
-          )}
+      <div className="flex flex-col gap-1">
+        <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+          <MapPin size={14} weight="fill" />
+          <span className="truncate">{event.location}</span>
         </div>
-      )}
+        
+        {(event.registrationUrl || event.vivaEngageUrl) && (
+          <div className="flex items-center gap-2">
+            {event.registrationUrl && (
+              <button
+                onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
+                className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
+              >
+                <LinkIcon size={14} weight="bold" />
+                <span>Reg</span>
+              </button>
+            )}
+            {event.vivaEngageUrl && (
+              <button
+                onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
+                className="flex items-center gap-1 text-sm font-medium text-ring hover:underline transition-colors"
+              >
+                <LinkIcon size={14} weight="bold" />
+                <span>Viva</span>
+              </button>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
