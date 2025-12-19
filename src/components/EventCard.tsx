@@ -45,7 +45,7 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
       style={{ borderLeftColor: solutionColor }}
     >
       <div className="flex items-start justify-between gap-2">
-        <h3 className="text-[15px] font-medium leading-snug line-clamp-4 flex-1">
+        <h3 className="text-[15px] font-medium leading-snug line-clamp-2 flex-1">
           {event.title}
         </h3>
         {position === 'start' && event.startDate !== effectiveEndDate && (
