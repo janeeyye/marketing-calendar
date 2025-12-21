@@ -84,7 +84,8 @@ function App() {
   };
 
   const handleExportJSON = () => {
-    const jsonString = JSON.stringify(events || [], null, 2);
+    const eventsToExport = events || [];
+    const jsonString = JSON.stringify(eventsToExport, null, 2);
     const blob = new Blob([jsonString], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     
@@ -100,7 +101,7 @@ function App() {
       URL.revokeObjectURL(url);
     }, 100);
     
-    toast.success("Events exported successfully!");
+    toast.success(`Exported ${eventsToExport.length} event(s) successfully!`);
   };
 
   return (
@@ -140,7 +141,7 @@ function App() {
               className="font-semibold rounded-lg px-4 py-2.5 h-auto text-sm transition-all duration-150 hover:-translate-y-0.5"
             >
               <Download size={18} weight="bold" className="mr-2" />
-              Export JSON
+              Export Events JSON
             </Button>
 
             <Button
