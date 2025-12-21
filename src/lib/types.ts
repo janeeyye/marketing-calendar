@@ -1,5 +1,4 @@
 export type Solution = 
-  | "All Business Solutions"
   | "AI Business Solutions"
   | "Cloud and AI Platforms"
   | "Security"
@@ -18,7 +17,6 @@ export interface Event {
 }
 
 export const SOLUTIONS: Solution[] = [
-  "All Business Solutions",
   "AI Business Solutions",
   "Cloud and AI Platforms",
   "Security",
@@ -35,7 +33,6 @@ export const LOCATION_OPTIONS = [
 
 export const getSolutionColor = (solution: Solution): string => {
   const colors: Record<Solution, string> = {
-    "All Business Solutions": "oklch(0.60 0.16 45)",
     "AI Business Solutions": "oklch(0.62 0.15 35)",
     "Cloud and AI Platforms": "oklch(0.65 0.12 160)",
     "Security": "oklch(0.55 0.15 240)",
