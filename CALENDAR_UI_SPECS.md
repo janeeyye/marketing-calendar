@@ -192,7 +192,11 @@ font-family: 'Noto Sans KR', 'Segoe UI', 'Malgun Gothic', -apple-system, BlinkMa
 
 ### Mobile Considerations (< 768px)
 Note: Current implementation is desktop-focused. For view-only mobile:
-- Reduce font sizes by ~1-2px
+- Reduce font sizes:
+  - Month title: 24px → 20px
+  - Day numbers: 14px → 13px
+  - Event titles: 12px → 11px
+  - Location/links: 11px → 10px
 - Reduce cell padding to `p-1.5` (6px)
 - Maintain auto-expand behavior
 - Single-line event titles with more aggressive truncation
@@ -284,7 +288,7 @@ interface Event {
 
 ### Date Format
 - **Format**: ISO date string `"YYYY-MM-DD"` (e.g., "2024-12-21")
-- **Timezone**: Korea Standard Time (KST / UTC+9)
+- **Timezone**: Korea Standard Time (KST / UTC+9) - *Note: This is specific to the reference implementation. Adjust timezone for your target audience.*
 - **Parsing**: Uses `parseDate()` which adds `T00:00:00+09:00`
 
 ---
