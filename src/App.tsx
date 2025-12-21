@@ -7,7 +7,7 @@ import { SolutionFilter } from "@/components/SolutionFilter";
 import { EventDetailModal } from "@/components/EventDetailModal";
 import { AddEventModal } from "@/components/AddEventModal";
 import { Button } from "@/components/ui/button";
-import { CaretLeft, CaretRight, Plus } from "@phosphor-icons/react";
+import { CaretLeft, CaretRight, Plus, Download } from "@phosphor-icons/react";
 import { Toaster, toast } from "sonner";
 
 function App() {
@@ -83,6 +83,26 @@ function App() {
     setEditingEvent(null);
   };
 
+  const handleExportJSON = () => {
+    const jsonString = JSON.stringify(events || [], null, 2);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "marketing-events.json";
+    a.style.display = "none";
+    document.body.appendChild(a);
+    a.click();
+    
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+    
+    toast.success("Events exported successfully!");
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Toaster position="top-right" />
@@ -113,13 +133,24 @@ function App() {
             </Button>
           </div>
 
-          <Button
-            onClick={() => setIsAddModalOpen(true)}
-            className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-5 py-2.5 h-auto text-sm transition-all duration-150 hover:-translate-y-0.5"
-          >
-            <Plus size={18} weight="bold" className="mr-2" />
-            Add Event
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button
+              onClick={handleExportJSON}
+              variant="outline"
+              className="font-semibold rounded-lg px-4 py-2.5 h-auto text-sm transition-all duration-150 hover:-translate-y-0.5"
+            >
+              <Download size={18} weight="bold" className="mr-2" />
+              Export JSON
+            </Button>
+
+            <Button
+              onClick={() => setIsAddModalOpen(true)}
+              className="bg-accent text-accent-foreground hover:bg-accent/90 font-semibold rounded-lg px-5 py-2.5 h-auto text-sm transition-all duration-150 hover:-translate-y-0.5"
+            >
+              <Plus size={18} weight="bold" className="mr-2" />
+              Add Event
+            </Button>
+          </div>
         </div>
 
         <div className="mb-7">
