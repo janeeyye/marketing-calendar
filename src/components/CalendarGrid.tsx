@@ -15,10 +15,24 @@ const WEEKDAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 export const CalendarGrid = ({ weeks, events, activeFilters, onEventClick }: CalendarGridProps) => {
   const getEventsForDate = (dateString: string) => {
     return events.filter((event) => {
-      if (!activeFilters.has(event.solution)) {
+      const isInDateRange = isDateInRange(dateString, event.startDate, event.endDate);
+      if (!isInDateRange) {
         return false;
       }
-      return isDateInRange(dateString, event.startDate, event.endDate);
+
+      const hasOtherSolutionActive = 
+        activeFilters.has("AI Business Solutions") ||
+        activeFilters.has("Cloud and AI Platforms") ||
+        activeFilters.has("Security");
+
+      if (event.solution === "All CSAs") {
+        if (hasOtherSolutionActive) {
+          return true;
+        }
+        return activeFilters.has("All CSAs");
+      }
+
+      return activeFilters.has(event.solution);
     });
   };
 
