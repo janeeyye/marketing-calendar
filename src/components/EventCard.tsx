@@ -1,4 +1,4 @@
-import { MapPin, ArrowRight, ArrowLeft, Link as LinkIcon } from "@phosphor-icons/react";
+import { MapPin, ArrowRight, ArrowLeft } from "@phosphor-icons/react";
 import { Event } from "@/lib/types";
 import { getSolutionColor } from "@/lib/types";
 import { getEventPosition } from "@/lib/calendar";
@@ -64,19 +64,17 @@ export const EventCard = ({ event, dateString, onClick }: EventCardProps) => {
             {event.registrationUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.registrationUrl!)}
-                className="flex items-center gap-1 text-[11px] font-medium text-ring hover:underline transition-colors"
+                className="text-[11px] font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={11} weight="bold" />
-                <span>Reg</span>
+                Reg❯
               </button>
             )}
             {event.vivaEngageUrl && (
               <button
                 onClick={(e) => handleLinkClick(e, event.vivaEngageUrl!)}
-                className="flex items-center gap-1 text-[11px] font-medium text-ring hover:underline transition-colors"
+                className="text-[11px] font-medium text-ring hover:underline transition-colors"
               >
-                <LinkIcon size={11} weight="bold" />
-                <span>Viva</span>
+                Details
               </button>
             )}
           </div>
