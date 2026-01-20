@@ -7,11 +7,21 @@ interface SolutionFilterProps {
 }
 
 export const SolutionFilter = ({ activeFilters, onToggleFilter }: SolutionFilterProps) => {
+  const hasOtherSolutionActive = 
+    activeFilters.has("AI Business Solutions") ||
+    activeFilters.has("Cloud and AI Platforms") ||
+    activeFilters.has("Security");
+
   return (
     <div className="flex items-center gap-3 flex-wrap">
       <span className="text-sm font-semibold text-foreground">Filter:</span>
       {SOLUTIONS.map((solution) => {
-        const isActive = activeFilters.has(solution);
+        let isActive = activeFilters.has(solution);
+        
+        if (solution === "All CSAs" && hasOtherSolutionActive) {
+          isActive = true;
+        }
+        
         const color = getSolutionColor(solution);
         
         return (
