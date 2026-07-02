@@ -16,6 +16,37 @@ export interface Event {
   vivaEngageUrl?: string;
 }
 
+export interface Highlight {
+  id: string;
+  title: string;
+  meta: string;
+  description: string;
+  url?: string;
+  displayOrder: number;
+}
+
+export interface OnDemand {
+  id: string;
+  title: string;
+  meta: string;
+  url?: string;
+  displayOrder: number;
+}
+
+export interface QuickLink {
+  id: string;
+  title: string;
+  url?: string;
+  displayOrder: number;
+}
+
+export interface ExportData {
+  events: Omit<Event, 'id'>[];
+  highlights: Omit<Highlight, 'id'>[];
+  onDemand: Omit<OnDemand, 'id'>[];
+  quickLinks: Omit<QuickLink, 'id'>[];
+}
+
 export const SOLUTIONS: Solution[] = [
   "AI Business Solutions",
   "Cloud and AI Platforms",
